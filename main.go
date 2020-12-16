@@ -17,11 +17,15 @@ func main() {
 	// serve Single Page application on "/web"
 	// assume static file at dist folder
 	app.Static("/web", "dist")
-
-	///app.Get("/web/*", func(ctx *fiber.Ctx) error {
 	app.Get("/", func(ctx *fiber.Ctx) error {
 
 		return ctx.SendFile("./web/dist/index.html")
+	})
+
+	app.Get("/about", func(ctx *fiber.Ctx) error {
+
+		return ctx.SendString("About Paged 👋!")
+
 	})
 
 	// Start server on http://localhost:3000
